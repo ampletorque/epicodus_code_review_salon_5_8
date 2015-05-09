@@ -11,7 +11,7 @@ Friday due to the president's visit downtown and the job-fair we worked from hom
 
 Description:
 ------------
-Allows user to add words to a dictionary and definitions to each word, show a list of words and a list of definitions for each word.
+Allows salon manager to add stylists, add clients, add clients to a stylist, add a stylist to a client, and view their connections. 
 
 By:
 ---
