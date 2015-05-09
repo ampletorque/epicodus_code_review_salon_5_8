@@ -1,0 +1,7 @@
+DB SCHEMA
+hair_salon
+  clients
+    
+    stylists
+
+hair_salon_test
