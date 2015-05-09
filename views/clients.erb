@@ -1,0 +1,27 @@
+<h1>Client Management</h1>
+
+<p>Add a client to the database:</p>
+
+<form action="/clients" method="post">
+  <label for="name">Client's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add client</button>
+</form>
+
+
+<% if @clients.any?() %>
+  <p>Click on a client to see or change their name and to add their stylist:</p>
+
+  <ul>
+    <% @clients.each do |client| %>
+      <li><a href="/clients/<%= client.id() %>"><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no clients yet.</p>
+<% end %>
+
+<p><a href="/stylists">See Stylists</a></p>
+
+<p><a href="/">Main Page</a></p>

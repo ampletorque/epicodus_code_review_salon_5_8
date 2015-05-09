@@ -1,0 +1,27 @@
+<h1>Stylist Management</h1>
+
+<p>Add a stylist:</p>
+
+<form action="/stylists" method="post">
+  <label for="name">Stylist's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add stylist</button>
+</form>
+
+
+<% if @stylists.any?() %>
+  <p>Click a stylist to see or change their name and to add their clients:</p>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+    <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no stylists yet.</p>
+<% end %>
+
+<p><a href="/clients">See Clients</a></p>
+
+<p><a href="/">Main Page</a></p>
