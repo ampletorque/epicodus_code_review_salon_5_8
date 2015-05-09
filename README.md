@@ -11,7 +11,7 @@ Friday due to the president's visit downtown and the job-fair we worked from hom
 
 Description:
 ------------
-Allows salon manager to add stylists, add clients, add clients to a stylist, add a stylist to a client, and view their connections. 
+Allows salon manager to add stylists, add clients, add clients to a stylist, add a stylist to a client, and view their connections.
 
 By:
 ---
@@ -29,7 +29,7 @@ and leave it running in the background. Then run:
 
     $ psql
 
-end at the interface, the following commands:
+and at the interface, the following commands:
 
     CREATE DATABASE hair_salon;
     \c hair_salon
