@@ -1,10 +1,17 @@
 <h1><%= @stylist.name() %></h1>
 
+<h3>Change stylist name</h3>
+<form action="/stylists/<%= @stylist.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="stylist_name">Enter stylist's new name</label>
+  <input id="stylist_name" name="stylist_name" type="text">
+  <button type="submit">Change name</button>
+</form>
+
 <h3>Add clients for this stylist:</h3>
 
 <% if @clients.any?() %>
   <form action="/stylists/<%= @stylist.id %>" method="post">
-    <input type="hidden" name="_method" value="patch">
     <% @clients.each() do |client| %>
       <div class="checkbox">
         <label>
@@ -12,15 +19,12 @@
         </label>
       </div>
     <% end %>
-
     <button type="submit">Add clients</button>
   </form>
 <% end %>
 
 <% if @stylist.clients().any?() %>
-
   <h3>Here are all the clients for this stylist:</h3>
-
   <ul>
     <% @stylist.clients().each() do |client| %>
       <li><%= client.name() %></li>
@@ -30,5 +34,9 @@
   <p>This stylist has no clients yet. <a href="/clients">Add clients</a></p>
 <% end %>
 
+<form action="/stylists/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete stylist</button>
+</form>
 
 <a href="/">Return to Main Page</a>

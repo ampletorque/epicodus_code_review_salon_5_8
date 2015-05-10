@@ -31,6 +31,11 @@ describe('add a stylist path', {:type => :feature}) do
     check('client_ids[]')
     click_button("Add clients")
     expect(page).to have_content("Here are all the clients")
+    fill_in("stylist_name", {:with => "Jim"})
+    click_button("Change name")
+    expect(page).to have_content("Jim")
+    click_button("Delete stylist")
+    expect(page).to have_content("There are no stylists yet.")
   end
 end
 
@@ -51,31 +56,12 @@ describe('add a client path', {:type => :feature}) do
     select("John", :from => "stylist_id")
     click_button("Add stylist")
     expect(page).to have_content("This client's stylist")
+    fill_in("client_name", {:with => "Sam"})
+    click_button("Change name")
+    expect(page).to have_content("Sam")
+    click_button("Delete client")
+    expect(page).to have_content("There are no clients yet.")
   end
 end
 
-#
-# describe('seeing details for a single list', {:type => :feature}) do
-#   it('allows a user to click a list to see the tasks and details for it') do
-#     test_list = List.new({:name => 'School stuff'})
-#     test_list.save()
-#     test_task = Task.new({:description => "learn SQL", :list_id => test_list.id()})
-#     test_task.save()
-#     visit('/lists')
-#     click_link(test_list.name())
-#     expect(page).to have_content(test_task.description())
-#   end
-# end
-#
-# describe('adding tasks to a list', {:type => :feature}) do
-#   it('allows a user to add a task to a list') do
-#     test_list = List.new({:name => 'School stuff'})
-#     test_list.save()
-#     visit("/lists/#{test_list.id()}")
-#     fill_in("Description", {:with => "Learn SQL"})
-#     click_button("Add task")
-#     expect(page).to have_content("Success")
-#   end
-# end
-#
 end

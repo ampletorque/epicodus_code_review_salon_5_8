@@ -49,18 +49,18 @@ describe(Stylist) do
       end
     end
 
-    describe("#clients") do
-        it("returns all of the clients for a stylist") do
-          test_stylist_1 = Stylist.new({:name => "Maude", :id => nil})
-          test_stylist_1.save()
-          test_client_1 = Client.new({:name => "Mike Maudlin", :id => nil, :stylist_id => nil})
-          test_client_1.save()
-          test_client_2 = Client.new({:name => "Matt Merry", :id => nil, :stylist_id => nil})
-          test_client_2.save()
-          test_stylist_1.add_client({:client_ids => [test_client_1.id(), test_client_2.id()]})
-          expect(test_stylist_1.clients()).to(eq([test_client_1, test_client_2]))
-        end
+  describe("#clients") do
+      it("returns all of the clients for a stylist") do
+        test_stylist_1 = Stylist.new({:name => "Maude", :id => nil})
+        test_stylist_1.save()
+        test_client_1 = Client.new({:name => "Mike Maudlin", :id => nil, :stylist_id => nil})
+        test_client_1.save()
+        test_client_2 = Client.new({:name => "Matt Merry", :id => nil, :stylist_id => nil})
+        test_client_2.save()
+        test_stylist_1.add_client({:client_ids => [test_client_1.id(), test_client_2.id()]})
+        expect(test_stylist_1.clients()).to(eq([test_client_1, test_client_2]))
       end
+    end
 
   describe("#delete") do
     it("lets you delete a stylist from the database") do
@@ -72,4 +72,5 @@ describe(Stylist) do
       expect(Stylist.all()).to(eq([test_stylist_2]))
     end
   end
+
 end

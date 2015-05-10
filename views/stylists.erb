@@ -5,14 +5,12 @@
 <form action="/stylists" method="post">
   <label for="name">Stylist's name:</label>
   <input id="name" name="name" type="text">
-
   <button type="submit">Add stylist</button>
 </form>
 
 
 <% if @stylists.any?() %>
   <p>Click a stylist to see or change their name and to add their clients:</p>
-
   <ul>
     <% @stylists.each do |stylist| %>
     <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>

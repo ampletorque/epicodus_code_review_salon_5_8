@@ -1,4 +1,3 @@
-require('pry')
 class Client
   attr_reader(:name, :id, :stylist_id)
 
@@ -43,22 +42,21 @@ class Client
   end
 
   define_method(:delete) do
-  #  DB.exec("UPDATE clients SET client_id = NULL WHERE client_id = #{self.id()};")
     DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
 
-define_method(:stylist) do
-  client_stylist = []
-  results = DB.exec("SELECT stylist_id FROM clients WHERE id = #{self.id()};")
-  results.each() do |result|
-    stylist_id = result.fetch("stylist_id").to_i()
-    stylist = DB.exec("SELECT * FROM stylists WHERE id = #{stylist_id};")
-    if stylist.any?() 
-      name = stylist.first().fetch("name")
-      client_stylist.push(Stylist.new({:name => name, :id => stylist_id}))
+  define_method(:stylist) do
+    client_stylist = []
+    results = DB.exec("SELECT stylist_id FROM clients WHERE id = #{self.id()};")
+    results.each() do |result|
+      stylist_id = result.fetch("stylist_id").to_i()
+      stylist = DB.exec("SELECT * FROM stylists WHERE id = #{stylist_id};")
+      if stylist.any?()
+        name = stylist.first().fetch("name")
+        client_stylist.push(Stylist.new({:name => name, :id => stylist_id}))
+      end
     end
+    client_stylist
   end
-  client_stylist
-end
 
 end
